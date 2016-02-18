@@ -235,7 +235,7 @@ class Pusher
 
         // json_encode might return false on failure
         if (!$data_encoded) {
-            $this->Log('Failed to perform json_encode on the the provided data: ' . print_r($data, true));
+            $this->log('Failed to perform json_encode on the the provided data: ' . print_r($data, true));
         }
 
         $post_params = array();
