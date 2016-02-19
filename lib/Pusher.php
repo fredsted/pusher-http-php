@@ -153,7 +153,7 @@ class Pusher
 
         foreach ($options as $key => $value) {
             // only set if valid setting/option
-            if (isset($this->settings[$key])) {
+            if (array_key_exists($key, $this->settings)) {
                 $this->settings[$key] = $value;
             }
         }
@@ -350,7 +350,7 @@ class Pusher
         curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: application/json", "Expect:"));
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($ch, CURLOPT_TIMEOUT, $this->settings['timeout']);
-        if ($this->settings['proxy']) {
+        if (!is_null($this->settings['proxy'])) {
             curl_setopt($ch, CURLOPT_PROXY, $this->settings['proxy']);
         }
 
